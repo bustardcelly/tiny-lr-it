@@ -1,9 +1,13 @@
 {
   "name": "tiny-lr-it",
   "version": "0.1.0",
-  "description": "target directories for tiny-livereload",
+  "description": "quickly target directories for tiny-lr",
   "main": "./bin/tiny-lr-it",
   "author": "Todd Anderson",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bustardcelly/tiny-lr-it"
+  },
   "licenses": [
     {
       "type": "MIT",
