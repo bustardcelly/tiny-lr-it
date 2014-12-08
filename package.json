@@ -1,6 +1,6 @@
 {
   "name": "tiny-lr-it",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "quickly target directories for tiny-lr",
   "bin": "./bin/tiny-lr-it",
   "main": "./bin/tiny-lr-it",
@@ -18,6 +18,7 @@
   "dependencies": {
     "minimist": "^1.1.0",
     "node-watch": "^0.3.4",
-    "tiny-lr": "^0.1.4"
+    "tiny-lr": "^0.1.4",
+    "colors": "^1.0.3"
   }
 }
