@@ -1,7 +1,8 @@
 {
   "name": "tiny-lr-it",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "quickly target directories for tiny-lr",
+  "bin": "./bin/tiny-lr-it",
   "main": "./bin/tiny-lr-it",
   "author": "Todd Anderson",
   "repository": {
