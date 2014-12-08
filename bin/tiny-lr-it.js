@@ -1,0 +1,68 @@
+#!/usr/bin/env node
+var fs = require('fs');
+var path = require('path');
+var watch = require('node-watch');
+var parseArgs = require('minimist');
+var args = parseArgs(process.argv.slice(2));
+
+require('colors');
+
+var cli = module.exports;
+
+var tinylr = require('tiny-lr');
+var livereloadPort = args.p || 35729;
+
+var help = [
+  'usage: tiny-lr-it [dirs]',
+  '',
+  'Starts a tiny-lr server and file watcher on provided target dirs.',
+  '',
+  'options:',
+  '  -h                  Display this help menu',
+  '  -p                  Desired port to start server on localhost'
+];
+
+var printHelp = function printHelp() {
+  console.log(help.join('\n').yellow);
+};
+
+cli.start = function(dirs) {
+
+  var lr = tinylr();
+  lr.listen(livereloadPort, function() {
+    console.log('livereload listening on ' + livereloadPort + '...');
+    watch(dirs, {recursive:true}, function(filename) {
+      lr.changed({
+        body: {
+          files: [filename]
+        }
+      });
+    });
+  });
+
+};
+
+if(args.h) {
+  printHelp();
+}
+else if(args._[0]) {
+  var dirs = [];
+  var list;
+  var i, length;
+  try {
+    list = args._[0].split(',');
+    length = list.length;
+    for(i = 0; i < length; i++) {
+      dirs.push(path.normalize(list[i]));
+    }
+    cli.start(dirs);
+  }
+  catch(e) {
+    console.error('Error in running watcher: ' + e.message);
+    printHelp();
+  }
+}
+else {
+  printHelp();
+}
+
