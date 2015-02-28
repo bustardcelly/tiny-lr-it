@@ -16,9 +16,8 @@
     }
   ],
   "dependencies": {
-    "minimist": "^1.1.0",
-    "node-watch": "^0.3.4",
-    "tiny-lr": "^0.1.4",
-    "colors": "^1.0.3"
+    "chokidar": "^1.0.0-rc3",
+    "colors": "^1.0.3",
+    "minimist": "^1.1.0"
   }
 }
