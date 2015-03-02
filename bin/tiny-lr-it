@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 var fs = require('fs');
 var path = require('path');
-var watch = require('node-watch');
+var watch = require('chokidar').watch;
 var parseArgs = require('minimist');
 var args = parseArgs(process.argv.slice(2));
 
@@ -31,12 +31,9 @@ cli.start = function(dirs) {
   var lr = tinylr();
   lr.listen(livereloadPort, function() {
     console.log('livereload listening on ' + livereloadPort + '...');
-    watch(dirs, {recursive:true}, function(filename) {
-      lr.changed({
-        body: {
-          files: [filename]
-        }
-      });
+    var watchOpts = {persistent: true, ignoreInitial: true};
+    watch(dirs, watchOpts).on('all', function(event, path) {
+      tinylr.changed(path);
     });
   });
 
