@@ -1,6 +1,6 @@
 {
   "name": "tiny-lr-it",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "quickly target directories for tiny-lr",
   "bin": "./bin/tiny-lr-it",
   "main": "./bin/tiny-lr-it",
